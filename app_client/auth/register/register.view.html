@@ -1,0 +1,24 @@
+<navigation></navigation>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Register</h1>
+            <p class="lead"> Already a Member? Please <a href="login">login</a> instead.</p>
+            <form ng-submit="vm.onSubmit()">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" ng-model="vm.credentials.name" placeholder="Enter Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Enter Email</label>
+                    <input type="email" class="form-control" id="email" mg-model="vm.credentials.email" placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Enter Password</label>
+                    <input type="password" class="form-control" id="password" ng-model="vm.credentials.password" placeholder="Enter Password">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
