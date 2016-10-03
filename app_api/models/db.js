@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
 var dbURI = 'mongodb://localhost/MEAN';
+//console.log('inside db.js---process.env---->'+JSON.stringify(process.env));
 
 if(process.env.NODE_ENV === 'production'){
     dbURI = process.env.MONGOLAB_URI;
 }
+//console.log('dbURI------>'+dbURI);
 mongoose.connect(dbURI);
 mongoose.connection.on('connected',function(){
     console.log('Mongoose connected to '+dbURI);

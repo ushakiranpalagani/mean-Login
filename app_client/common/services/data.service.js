@@ -5,9 +5,11 @@
     meanData.$injector = ['$http','authentication'];
     function meanData($http,authentication){
         var getProfile = function(){
-            return $http.get('/api/profile',{
+            //console.log('inside getProfile() of meanData Service');
+            //console.log('in meanData service -->authentication.getToken()---------->'+authentication.getToken());
+            return $http.get('/profile',{
                 header:{
-                    Authorization:'Bearer ' + authentication.getToken(),
+                    Authorization:'Bearer ' + authentication.getToken()
 
                 }
             });

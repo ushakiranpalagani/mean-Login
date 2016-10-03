@@ -24,17 +24,20 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+//console.log('__dirname--->'+__dirname+' '+path.join(__dirname, 'app_client'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 app.use(passport.initialize());
-app.use('/api', routesApi);
 
+app.use('/api', routesApi);
 app.use(function(req, res) {
-  console.log("inside app.js---app.use--index.html");
+ // console.log("inside app.js---app.use--index.html");
   res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
 });
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -63,11 +66,11 @@ if (app.get('env') === 'development') {
     });
   });
 }
-app.get('*', function(req, res) {
+/*app.get('*', function(req, res) {
   console.log("inside app.get()---client");
   res.sendfile('./api_client/index.html');
   // load the single view file (angular will handle the page changes on the front-end)
-});
+});*/
 
 
 // production error handler
@@ -79,6 +82,10 @@ app.get('*', function(req, res) {
     error: {}
   });
 });*/
+
+app.route('/api')
+    .get()
+    .post
 
 app.listen(8080);
 console.log("server listening @ 8080");

@@ -10,14 +10,17 @@
             password:""
         };
         vm.onSubmit = function(){
+            //console.log('Submitting login--$scope.email--->'+vm.credentials.email);
+            //console.log('checking $scope.password'+vm.credentials.password);
+
             authentication
                 .login(vm.credentials)
-                .error(function(err){
-                    alert(err);
-
-                })
                 .then(function(){
                     $location.path('profile');
+                })
+                .catch(function(err){
+                    alert(err);
+
                 });
         };
     }
